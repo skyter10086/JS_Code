@@ -17,7 +17,7 @@ function _foo_ (x, y) {
        return x
    } else if (x) {
        var arr_new = []
-       return arr_new.concat(x).concat(y)
+       return arr_new.concat(x).concat(y) // 这里用concat()做数组扁平化处理,x和y被当作一组参数合并到数组arr_new
    } else {
        return 'You give a null arg.'
    }
