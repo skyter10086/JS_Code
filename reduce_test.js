@@ -3,7 +3,7 @@
 //    为了灵活，没有对参数函数作内嵌处理
 
 
-function _sum_ (x , y) {
+function _sum_ (x , y) { // reduce会依次对数组里的每两个元素进行迭代处理，所以作为参数的函数必须是两个参数值
     return x + y
 }
 
@@ -37,7 +37,10 @@ function each_slice (arr,f) {
         //console.log(i)
         //console.log(arr.slice(0,i+1))
         var ff =f
-        var mid = reduce_func(arr.slice(0,i+1),ff)
+        
+        //reduce_func()定义在函数体外，所以不能直接拿到参数f,需要赋值一个新参数
+        //array对象的slice()跟两个参数，第一个是开始index，另一个是结束位置，注意会取到结束位置前一个元素
+        var mid = reduce_func(arr.slice(0,i+1),ff) 
         arr_new.push(mid)
         //console.log(mid)
     }
@@ -46,7 +49,8 @@ function each_slice (arr,f) {
 
 function num_range (x, type) {
     var arr = []
-    for ( i = 0 ; i<= x; i++ ){
+    // for (var i in arr) {} 返回的i为字符串 ，切记！！！
+    for ( i = 0 ; i<= x; i++ ){  
         arr.push(i)
     }
     
